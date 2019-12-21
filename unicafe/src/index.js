@@ -10,7 +10,21 @@ const App = () => {
   return (
     <div>
       <Header />
-      <Counters good= {good, setGood} neutral = {neutral, setNeutral} bad = {bad, setBad}/>
+
+      <Button
+        onClick={() => setGood(good + 1)}
+        text='positive'
+      />
+      <Button
+        onClick={() => setNeutral(neutral + 1)}
+        text='neutral'
+      />
+      <Button
+        onClick={() => setBad(bad + 1)}
+        text='negative'
+      />
+
+      <Stats good = {good} neutral = {neutral} bad = {bad} />
     </div>
   )
 }
@@ -21,28 +35,27 @@ const Header = () => {
         <h1>
             Unicafe feedback
         </h1>
+        <h3>
+          Gibs dem feedback pls
+        </h3>
         </>
     )
 }
 
-const Counters = (props) => {
+const Stats = (props) => {
   return (
       <>
-      <h3>
-        Give feedback here!
-      </h3>
-      <Button
-        onClick={() => props.good.setGood(props.good.good + 1)}
-        text='positive'
-      />
-      <Button
-        onClick={() => props.bad.setBad(props.bad.bad + 1)}
-        text='negative'
-      />
-      <Button
-        onClick={() => props.neutral.setNeutral(props.neutral.neutral + 1)}
-        text='enemmän lihaa'
-      />
+      <h2>
+        Stats for nerds
+      </h2>
+      <p>
+        Good : {props.good}
+      <p/>
+      <p>
+        Neutral : {props.neutral}
+      </p>
+        Bad : {props.bad}
+      </p>
       </>
   )
 }
