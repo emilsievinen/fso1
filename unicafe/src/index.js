@@ -57,11 +57,28 @@ const Stats = (props) => {
       <h2>
         Stats for nerds
       </h2>
-      <Statistic text='Good' value={props.good} />
-      <Statistic text='Neutral' value={props.neutral} />
-      <Statistic text='Total feedback given' value={props.good + props.neutral + props.bad} />
-      <Statistic text='Average score' value={props.good*1 + props.neutral*0 + props.bad*(-1)} />
-      <Statistic text='Positive feedback' value={(100*props.good/(props.good + props.neutral + props.bad)).toString().concat(' %')}/>
+      <table>
+        <tbody>
+        <tr>
+          <Statistic text='Good' value={props.good} />
+        </tr>
+      <tr>
+        <Statistic text='Neutral' value={props.neutral} />
+      </tr>
+      <tr>
+        <Statistic text='Bad' value={props.bad} />
+      </tr>
+      <tr>
+        <Statistic text='Total feedback given' value={props.good + props.neutral + props.bad} />
+      </tr>
+      <tr>
+        <Statistic text='Average score' value={props.good*1 + props.neutral*0 + props.bad*(-1)} />
+      </tr>
+      <tr>
+        <Statistic text='Positive feedback' value={(100*props.good/(props.good + props.neutral + props.bad)).toString().concat(' %')}/>
+      </tr>
+      </tbody>
+      </table>
       </div>
   )
   }
@@ -71,9 +88,12 @@ const Stats = (props) => {
 const Statistic = (props) => {
   return (
     <>
-    <p>
-    {props.text} : {props.value}
-    </p>
+    <td>
+    {props.text}
+    </td>
+    <td>
+    {props.value}
+    </td>
     </>
   )
 } 
