@@ -46,10 +46,18 @@ const Stats = (props) => {
   let posFeed =-1
   if (props.good + props.neutral + props.bad == 0) {
     posFeed = 0
+
+    return (
+      <>
+      <h4>
+        No feedback yet!
+      </h4>
+      </>
+    )
   } else {
     posFeed = 100*props.good/(props.good + props.neutral + props.bad)
-  }
-  return (
+
+    return (
       <>
       <h2>
         Stats for nerds
@@ -72,6 +80,8 @@ const Stats = (props) => {
       Positive feedback : {posFeed} %
       </>
   )
+  }
+  
 }
 
 const Button = ({ onClick, text }) => (
