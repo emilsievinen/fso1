@@ -43,10 +43,7 @@ const Header = () => {
 }
 
 const Stats = (props) => {
-  let posFeed =-1
-  if (props.good + props.neutral + props.bad == 0) {
-    posFeed = 0
-
+  if (props.good + props.neutral + props.bad === 0) {
     return (
       <>
       <h4>
@@ -55,34 +52,31 @@ const Stats = (props) => {
       </>
     )
   } else {
-    posFeed = 100*props.good/(props.good + props.neutral + props.bad)
-
     return (
-      <>
+      <div>
       <h2>
         Stats for nerds
       </h2>
-      <p>
-        Good : {props.good}
-      <p/>
-      <p>
-        Neutral : {props.neutral}
-      </p>
-        Bad : {props.bad}
-      </p>
-
-      <p>
-        Total feedback given : {props.good + props.neutral + props.bad}
-      </p>
-      <p>
-        Average score : {props.good*1 + props.neutral*0 + props.bad*(-1)}
-      </p>
-      Positive feedback : {posFeed} %
-      </>
+      <Statistic text='Good' value={props.good} />
+      <Statistic text='Neutral' value={props.neutral} />
+      <Statistic text='Total feedback given' value={props.good + props.neutral + props.bad} />
+      <Statistic text='Average score' value={props.good*1 + props.neutral*0 + props.bad*(-1)} />
+      <Statistic text='Positive feedback' value={(100*props.good/(props.good + props.neutral + props.bad)).toString().concat(' %')}/>
+      </div>
   )
   }
   
 }
+
+const Statistic = (props) => {
+  return (
+    <>
+    <p>
+    {props.text} : {props.value}
+    </p>
+    </>
+  )
+} 
 
 const Button = ({ onClick, text }) => (
   <button onClick={onClick}>
