@@ -43,6 +43,12 @@ const Header = () => {
 }
 
 const Stats = (props) => {
+  let posFeed =-1
+  if (props.good + props.neutral + props.bad == 0) {
+    posFeed = 0
+  } else {
+    posFeed = 100*props.good/(props.good + props.neutral + props.bad)
+  }
   return (
       <>
       <h2>
@@ -56,6 +62,14 @@ const Stats = (props) => {
       </p>
         Bad : {props.bad}
       </p>
+
+      <p>
+        Total feedback given : {props.good + props.neutral + props.bad}
+      </p>
+      <p>
+        Average score : {props.good*1 + props.neutral*0 + props.bad*(-1)}
+      </p>
+      Positive feedback : {posFeed} %
       </>
   )
 }
